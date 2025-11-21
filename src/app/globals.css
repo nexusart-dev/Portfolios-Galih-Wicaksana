@@ -1,26 +1,423 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
 
-@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
 }
+
+
+
+/* ===========================
+      START BOXES SPINNER
+=========================== */
+.spinner-face {
+  background-color: rgba(157, 78, 221, 0.2);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border: 2px solid #9d4edd;
+}
+
+.spinner-face-1 {
+  transform: translateZ(-15px) rotateY(180deg);
+}
+
+.spinner-face-2 {
+  transform: rotateY(-270deg) translateX(50%);
+  transform-origin: top right;
+}
+
+.spinner-face-3 {
+  transform: rotateY(270deg) translateX(-50%);
+  transform-origin: center left;
+}
+
+.spinner-face-4 {
+  transform: rotateX(90deg) translateY(-50%);
+  transform-origin: top center;
+}
+
+.spinner-face-5 {
+  transform: rotateX(-90deg) translateY(50%);
+  transform-origin: bottom center;
+}
+
+.spinner-face-6 {
+  transform: translateZ(15px);
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+  }
+  50% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+  }
+  100% {
+    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+  }
+}
+
+.animate-spinner-rotate {
+  animation: spinner-rotate 2s infinite ease;
+}
+/* ===========================
+        END BOXES SPINNER
+=========================== */
+
+
+
+/* ===========================
+START BACKGROUND ANIMATION GRID
+=========================== */
+/* Base cell */
+.cell-base {
+  --cell-size: 51px;
+  --cell-spacing: 1px;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  margin: var(--cell-spacing);
+  border-radius: 4px;
+  background-color: transparent;
+  animation: ripple 1.5s ease infinite;
+}
+
+/* Animation delays */
+.cell-d-0  { animation-delay:   0ms; }
+.cell-d-1  { animation-delay: 100ms; }
+.cell-d-2  { animation-delay: 200ms; }
+.cell-d-3  { animation-delay: 300ms; }
+.cell-d-4  { animation-delay: 400ms; }
+.cell-d-5  { animation-delay: 500ms; }
+.cell-d-6  { animation-delay: 600ms; }
+.cell-d-7  { animation-delay: 700ms; }
+.cell-d-8  { animation-delay: 800ms; }
+.cell-d-9  { animation-delay: 900ms; }
+.cell-d-10 { animation-delay: 1000ms; }
+.cell-d-11 { animation-delay: 1100ms; }
+.cell-d-12 { animation-delay: 1200ms; }
+.cell-d-13 { animation-delay: 1300ms; }
+.cell-d-14 { animation-delay: 1400ms; }
+
+/* Colors 1–60 */
+.cell-color-1  { --cell-color: #00FF87; }
+.cell-color-2  { --cell-color: #0CFD95; }
+.cell-color-3  { --cell-color: #17FBA2; }
+.cell-color-4  { --cell-color: #23F9B2; }
+.cell-color-5  { --cell-color: #30F7C3; }
+.cell-color-6  { --cell-color: #3DF5D4; }
+.cell-color-7  { --cell-color: #45F4DE; }
+.cell-color-8  { --cell-color: #53F1F0; }
+.cell-color-9  { --cell-color: #60EFFF; }
+.cell-color-10 { --cell-color: #6DEEFF; }
+.cell-color-11 { --cell-color: #7AECFF; }
+.cell-color-12 { --cell-color: #87EBFF; }
+.cell-color-13 { --cell-color: #94E9FF; }
+.cell-color-14 { --cell-color: #A1E8FF; }
+.cell-color-15 { --cell-color: #AEE6FF; }
+.cell-color-16 { --cell-color: #BBE5FF; }
+.cell-color-17 { --cell-color: #C8E3FF; }
+.cell-color-18 { --cell-color: #D5E2FF; }
+.cell-color-19 { --cell-color: #E2E0FF; }
+.cell-color-20 { --cell-color: #EFDFFF; }
+.cell-color-21 { --cell-color: #FCDDFF; }
+.cell-color-22 { --cell-color: #FFDCF5; }
+.cell-color-23 { --cell-color: #FFDAEB; }
+.cell-color-24 { --cell-color: #FFD9E1; }
+.cell-color-25 { --cell-color: #FFD7D7; }
+.cell-color-26 { --cell-color: #FFD6CD; }
+.cell-color-27 { --cell-color: #FFD4C3; }
+.cell-color-28 { --cell-color: #FFD3B9; }
+.cell-color-29 { --cell-color: #FFD1AF; }
+.cell-color-30 { --cell-color: #FFD0A5; }
+.cell-color-31 { --cell-color: #FFCE9B; }
+.cell-color-32 { --cell-color: #FFCD91; }
+.cell-color-33 { --cell-color: #FFCB87; }
+.cell-color-34 { --cell-color: #FFCA7D; }
+.cell-color-35 { --cell-color: #FFC873; }
+.cell-color-36 { --cell-color: #FFC769; }
+.cell-color-37 { --cell-color: #FFC55F; }
+.cell-color-38 { --cell-color: #FFC455; }
+.cell-color-39 { --cell-color: #FFC24B; }
+.cell-color-40 { --cell-color: #FFC141; }
+.cell-color-41 { --cell-color: #FFBF37; }
+.cell-color-42 { --cell-color: #FFBE2D; }
+.cell-color-43 { --cell-color: #FFBC23; }
+.cell-color-44 { --cell-color: #FFBB19; }
+.cell-color-45 { --cell-color: #FFB90F; }
+.cell-color-46 { --cell-color: #FFB805; }
+.cell-color-47 { --cell-color: #FFB600; }
+.cell-color-48 { --cell-color: #FFB500; }
+.cell-color-49 { --cell-color: #FFB300; }
+.cell-color-50 { --cell-color: #FFB200; }
+.cell-color-51 { --cell-color: #FFB000; }
+.cell-color-52 { --cell-color: #FFAF00; }
+.cell-color-53 { --cell-color: #FFAD00; }
+.cell-color-54 { --cell-color: #FFAC00; }
+.cell-color-55 { --cell-color: #FFAA00; }
+.cell-color-56 { --cell-color: #FFA900; }
+.cell-color-57 { --cell-color: #FFA700; }
+.cell-color-58 { --cell-color: #FFA600; }
+.cell-color-59 { --cell-color: #FFA400; }
+.cell-color-60 { --cell-color: #FFA300; }
+
+/* Ripple Animation */
+@keyframes ripple {
+  0%   { background-color: transparent; }
+  30%  { background-color: var(--cell-color); }
+  60%  { background-color: transparent; }
+  100% { background-color: transparent; }
+}
+/* ===========================
+END BACKGROUND ANIMATION GRID
+=========================== */
+
+
+/* ===========================
+  START THEME TOGGLE SWITCH
+=========================== */
+.theme-switch {
+  font-size: 15px;
+  position: relative;
+  display: inline-block;
+  width: 3.2em;
+  height: 1.8em;
+  border-radius: 25px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-switch-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.theme-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2a2a2a;
+  transition: 0.4s;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.theme-slider::before {
+  position: absolute;
+  content: "";
+  height: 1em;
+  width: 1em;
+  border-radius: 15px;
+  left: 0.4em;
+  bottom: 0.4em;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+  box-shadow: inset 6px -3px 0px 0px #fff;
+}
+
+/* Checked State */
+.theme-switch-input:checked + .theme-slider {
+  background-color: #00a6ff;
+}
+
+.theme-switch-input:checked + .theme-slider::before {
+  transform: translateX(1.5em);
+  box-shadow: inset 12px -3px 0px 10px #ffcf48;
+}
+
+/* Stars */
+.star {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  transition: all 0.4s;
+}
+
+.star-1 {
+  left: 2em;
+  top: 0.4em;
+}
+
+.star-2 {
+  left: 1.8em;
+  top: 1em;
+}
+
+.star-3 {
+  left: 2.5em;
+  top: 0.8em;
+}
+
+.theme-switch-input:checked ~ .theme-slider .star {
+  opacity: 0;
+}
+
+/* Clouds */
+.cloud {
+  width: 2.8em;
+  position: absolute;
+  bottom: -1.1em;
+  left: -0.9em;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.theme-switch-input:checked ~ .theme-slider .cloud {
+  opacity: 1;
+}
+/* ===========================
+    END THEME TOGGLE SWITCH
+=========================== */
+
+
+
+/* ============================
+    START MY NAME ANIMATION
+============================ */
+.loader-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  user-select: none;
+  color: #9C19E0;
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: transparent;
+  mask: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 6px,
+    black 7px,
+    black 8px
+  );
+}
+
+.loader-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: loader-letter-anim 4s infinite linear;
+  z-index: 2;
+}
+
+.loader-spacer {
+  display: inline-block;
+  width: 0.3em;
+}
+
+/* Delay tiap huruf */
+.loader-letter-1  { animation-delay: 0.10s; }
+.loader-letter-2  { animation-delay: 0.205s; }
+.loader-letter-3  { animation-delay: 0.31s; }
+.loader-letter-4  { animation-delay: 0.415s; }
+.loader-letter-5  { animation-delay: 0.52s; }
+.loader-letter-6  { animation-delay: 0.625s; }
+.loader-letter-7  { animation-delay: 0.73s; }
+.loader-letter-8  { animation-delay: 0.835s; }
+.loader-letter-9  { animation-delay: 0.94s; }
+.loader-letter-10 { animation-delay: 1.045s; }
+.loader-letter-11 { animation-delay: 1.15s; }
+.loader-letter-12 { animation-delay: 1.255s; }
+.loader-letter-13 { animation-delay: 1.36s; }
+.loader-letter-14 { animation-delay: 1.465s; }
+
+/* Letter Animation */
+@keyframes loader-letter-anim {
+  0% { opacity: 0; }
+  5% {
+    opacity: 1;
+    text-shadow: 0 0 8px #AE00FB;
+    transform: scale(1.1) translateY(-2px);
+  }
+  20% { opacity: 0.2; }
+  100% { opacity: 0; }
+}
+/* ============================
+      END MY NAME ANIMATION
+============================ */

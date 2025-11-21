@@ -1,0 +1,11 @@
+export { default as OpenDialog } from "./OpenDialog";
+export { default as Github } from "./Github";
+export { default as Linkedin } from "./Linkedin";
+export { default as Instagram } from "./Instagram";
+export { default as Mail } from "./Mail";
+export { default as Phone } from "./Phone";
+export { default as MapPin } from "./MapPin";
+export { default as ExternalLink } from "./ExternalLink";
+export { default as Menu } from "./Menu";
+export { default as Close } from "./Close";
+export { default as VerifyIcon } from "./VerifyIcon";
