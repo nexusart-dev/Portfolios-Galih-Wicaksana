@@ -151,7 +151,7 @@ export const projects: Project[] = [
         technologies: ['Next.js', 'TypeScript', 'Tanstack Router', 'Parse', 'Material UI'],
         // githubUrl: 'https://github.com/username/project2',
         // liveUrl: 'https://project5.demo.com',
-        image: '/images/project4.jpg',
+        image: '/images/project4-new.jpg',
     },
 ]
 
