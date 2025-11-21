@@ -12,11 +12,11 @@ export default function Certificate() {
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
                     My Certificate
                 </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
                     {certificate.map((cert, index) => (
                         <div 
                             key={`cert-${cert.id}-${index}`}
-                            className="relative w-full max-w-[350px] lg:max-w-[350px] md:max-w-[90%] sm:max-w-full aspect-[16/12] md:aspect-[4/3] sm:aspect-square rounded-lg overflow-hidden shadow-[0px_0px_10px_1px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0px_5px_20px_5px_rgba(0,0,0,0.27)]"
+                            className="relative w-full max-w-[350px] aspect-[16/12] md:aspect-[4/3] rounded-lg overflow-hidden shadow-[0px_0px_10px_1px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0px_5px_20px_5px_rgba(0,0,0,0.27)]"
                         >
                             <div className="absolute inset-0 w-full h-full">
                                 <Image

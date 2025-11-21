@@ -29,21 +29,21 @@ export default function Hero() {
                             using modern technologies like React, Next.js, and TypeScript.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <a href="https://github.com/nexusart-dev" target="_blank" rel="noopener noreferrer">
-                                <Button variant="outline" size="lg" className="flex items-center gap-2">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center lg:items-start">
+                            <a href="https://github.com/nexusart-dev" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <Button variant="outline" size="lg" className="w-full flex items-center justify-center gap-2">
                                     <Github className="h-5 w-5" />
                                     GitHub
                                 </Button>
                             </a>
-                            <a href="https://www.linkedin.com/in/galih-wicaksana/" target="_blank" rel="noopener noreferrer">
-                                <Button variant="outline" size="lg" className="flex items-center gap-2">
+                            <a href="https://www.linkedin.com/in/galih-wicaksana/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <Button variant="outline" size="lg" className="w-full flex items-center justify-center gap-2">
                                     <Linkedin className="h-5 w-5" />
                                     LinkedIn
                                 </Button>
                             </a>
-                            <a href="https://www.instagram.com/axr.nxusy_.art?igsh=YjQ4YWMzdnQwYWRt" target="_blank" rel="noopener noreferrer">
-                                <Button variant="outline" size="lg" className="flex items-center gap-2">
+                            <a href="https://www.instagram.com/axr.nxusy_.art?igsh=YjQ4YWMzdnQwYWRt" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <Button variant="outline" size="lg" className="w-full flex items-center justify-center gap-2">
                                     <Instagram className="h-5 w-5" />
                                     Instagram
                                 </Button>
