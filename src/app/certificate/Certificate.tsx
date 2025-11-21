@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { certificate } from '@/data';
-import { OpenDialog } from '@/components/icons';
-import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
+import { OpenDialog, Close } from '@/components/icons';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogClose } from "@/components/ui/dialog";
 
 export default function Certificate() {
     return (
@@ -39,9 +39,17 @@ export default function Certificate() {
                                                 </button>
                                             </div>
                                         </DialogTrigger>
-                                        <DialogContent className="max-w-4xl w-[90vw] p-0 bg-transparent border-0 [&>button]:hidden">
-                                            <DialogTitle className='pt-5 ml-2 text-white'>{cert.description}</DialogTitle>
-                                            <div className="relative w-full h-[75vh] p-0">
+                                        <DialogContent className="max-w-4xl w-[95vw] sm:w-[90vw] p-0 bg-transparent border-0 max-h-[95vh] overflow-y-auto">
+                                            <DialogClose className="absolute right-2 top-2 sm:right-4 sm:top-4 z-50 rounded-full bg-white/90 dark:bg-gray-800/90 p-2 hover:bg-white dark:hover:bg-gray-800 transition-colors backdrop-blur-sm">
+                                                <Close className="h-5 w-5 text-gray-900 dark:text-white" />
+                                                <span className="sr-only">Close</span>
+                                            </DialogClose>
+
+                                            <DialogTitle className='pt-3 sm:pt-5 px-2 sm:ml-2 text-white text-sm sm:text-base'>
+                                                {cert.description}
+                                            </DialogTitle>
+
+                                            <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] p-2 sm:p-0">
                                                 <Image
                                                     src={cert.image}
                                                     alt={cert.title}
@@ -49,8 +57,9 @@ export default function Certificate() {
                                                     className="object-contain"
                                                 />
                                             </div>
-                                            <div className="bg-white dark:bg-gray-800 p-4 rounded-b-lg">
-                                                <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+
+                                            <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-b-lg mx-2 sm:mx-0 mb-2 sm:mb-0">
+                                                <h3 className="font-bold text-base sm:text-lg text-gray-900 dark:text-white">
                                                     {cert.title}
                                                 </h3>
                                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
